@@ -21,6 +21,8 @@
 .NOTES
    Author: Rune Moskvil Lyngås
    Version history:
+   1.0.5
+        - Added url for Exchange 2013 CU20 and Exchange 2016 CU9
    1.0.4
         - Added url for Exchange 2013 CU19 and Exchange 2016 CU8
         - Version parameter is no longer mandatory. If omitted, the latest CU for the installed Exchange version will be downloaded (requires Exchange Management Shell installed)
@@ -36,14 +38,14 @@
    1.0.0
         - Initial release
    
-   Last updated: 21.12.2017
+   Last updated: 23.03.2018
 #>
 Function Get-ExchangeCU
 {
     [CmdletBinding(SupportsShouldProcess = $True)]
     Param(
         [Parameter(HelpMessage = "Exchange CU version to download")]
-        [ValidateSet("2013_CU1", "2013_CU2", "2013_CU3", "2013_CU4/SP1", "2013_CU5", "2013_CU6", "2013_CU7", "2013_CU8", "2013_CU9", "2013_CU10", "2013_CU11", "2013_CU12", "2013_CU13", "2013_CU14", "2013_CU15", "2013_CU16", "2013_CU17", "2013_CU18", "2013_CU19", "2016_CU1", "2016_CU2", "2016_CU3", "2016_CU4", "2016_CU5", "2016_CU6", "2016_CU7", "2016_CU8")]
+        [ValidateSet("2013_CU1", "2013_CU2", "2013_CU3", "2013_CU4/SP1", "2013_CU5", "2013_CU6", "2013_CU7", "2013_CU8", "2013_CU9", "2013_CU10", "2013_CU11", "2013_CU12", "2013_CU13", "2013_CU14", "2013_CU15", "2013_CU16", "2013_CU17", "2013_CU18", "2013_CU19", "2013_CU20", "2016_CU1", "2016_CU2", "2016_CU3", "2016_CU4", "2016_CU5", "2016_CU6", "2016_CU7", "2016_CU8", "2016_CU9")]
         [string]$Version,
 
         [Parameter(ValueFromPipelineByPropertyName = $True, HelpMessage = "Exchange servers. Given as an array: Server1,Server2")]
@@ -288,6 +290,7 @@ Function Get-ExchangeCUUri
     $ExchangeTable += (New-Object PSObject -Property @{ Name = "2013_CU17"; Value = "https://download.microsoft.com/download/D/E/1/DE1C3D22-28A6-4A30-9811-0A0539385E51/Exchange2013-x64-cu17.exe" })
     $ExchangeTable += (New-Object PSObject -Property @{ Name = "2013_CU18"; Value = "https://download.microsoft.com/download/5/9/8/598B1735-BC2E-43FC-88DD-0CDFF838EE09/Exchange2013-x64-cu18.exe" })
     $ExchangeTable += (New-Object PSObject -Property @{ Name = "2013_CU19"; Value = "https://download.microsoft.com/download/3/A/4/3A4E9E23-E698-477D-B1E3-CA235CE3DB7C/Exchange2013-x64-cu19.exe" })
+    $ExchangeTable += (New-Object PSObject -Property @{ Name = "2013_CU20"; Value = "https://download.microsoft.com/download/3/9/B/39B25E37-2265-4FBC-AF87-7CA6CA089615/Exchange2013-x64-cu20.exe" })
     $ExchangeTable += (New-Object PSObject -Property @{ Name = "2016_CU1"; Value = "https://download.microsoft.com/download/6/4/8/648EB83C-00F9-49B2-806D-E46033DA4AE6/ExchangeServer2016-CU1.iso" })
     $ExchangeTable += (New-Object PSObject -Property @{ Name = "2016_CU2"; Value = "https://download.microsoft.com/download/C/6/C/C6C10C1B-EFD8-4AE7-AEE1-C04F45869F5D/ExchangeServer2016-x64-CU2.iso" })
     $ExchangeTable += (New-Object PSObject -Property @{ Name = "2016_CU3"; Value = "N/A" })
@@ -296,6 +299,7 @@ Function Get-ExchangeCUUri
     $ExchangeTable += (New-Object PSObject -Property @{ Name = "2016_CU6"; Value = "https://download.microsoft.com/download/2/D/B/2DB1EEA2-CD9B-48F1-8235-1C9B82D19D68/ExchangeServer2016-x64-cu6.iso" })
     $ExchangeTable += (New-Object PSObject -Property @{ Name = "2016_CU7"; Value = "https://download.microsoft.com/download/0/7/4/074FADBD-4422-4BBC-8C04-B56428667E36/ExchangeServer2016-x64-cu7.iso" })
     $ExchangeTable += (New-Object PSObject -Property @{ Name = "2016_CU8"; Value = "https://download.microsoft.com/download/1/F/7/1F777B44-32CB-4F3D-B486-3D0F566D79A9/ExchangeServer2016-x64-cu8.iso" })
+    $ExchangeTable += (New-Object PSObject -Property @{ Name = "2016_CU9"; Value = "https://download.microsoft.com/download/5/8/C/58CA2823-6764-4355-B9DE-EB196E43BC81/ExchangeServer2016-x64-cu9.iso" })
 
     if ($Version)
     {
